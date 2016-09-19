@@ -1,0 +1,73 @@
+ *****************************************************************************
+ *        descriptor for TMAP GT format
+ *****************************************************************************
+ $FORMAT_RECORD
+ D_TYPE  = '  GT',
+ D_FORMAT        = '  1C',
+ D_SOURCE_CLASS  = 'MODEL OUTPUT    ',
+ D_SOURCE        = ' ',
+ D_SUBSOURCE     = 'whatever',
+ D_PROG_REV      = '0.00'
+ $END
+ $BACKGROUND_RECORD
+ D_EXPNUM        = 'NEXT',
+ D_MODNUM        = 'ABCD',
+ D_TITLE 	 = 'Dummy data set to show time-independent set up',
+ D_MOD_TITLE     = ' ',
+ D_FORCING_SET   = '???             ',
+ D_T0TIME	 = 'INDEPENDENT',
+ D_TIME_UNIT     =  86400.,			
+ D_TIME_MADE     = '17-SEP-1991',
+ D_WHO_MADEIT    = 'Steve Hankin',
+ D_GRID_FILENAME = 'examp_t_indep.grd',5*' '
+ $END
+* D_TOTIME_UNIT is irrelevant in above record
+ $MESSAGE_RECORD
+ D_MESSAGE       = 'Try "SHOW GRID/K=1:10 VAR1" and "SHOW GRID/Y VAR2"',
+ D_ALERT_ON_OPEN = T,
+ D_ALERT_ON_OUTPUT = F
+ $END
+ $VARIABLE_RECORD
+ D_VAR_CODE      = 'VAR1',
+ D_VAR_TITLE     = 'TEMPERATURE',
+ D_VAR_TITL_MOD  = '                                        ',
+ D_VAR_UNITS     = 'deg. C',
+ D_GRID_NAME     = 'GEXAMP1',
+ D_MISSING_FLAG  = 1.E+35,
+ D_BAD_FLAG      = 1.E+35,
+ D_ORDERING      = 'WE', 'SN', 'UD', 'TI',
+ D_GRID_START    =          1,          1,           1,          1,
+ D_GRID_END      =         20,         30,         301,          1,
+ D_PRECISION     = 'SINGLE      ',
+ D_AUX_SET_NUM   =           0
+ $END
+ $VARIABLE_RECORD
+ D_VAR_CODE      = 'VAR2',
+ D_VAR_TITLE     = 'SALINITY',
+ D_VAR_UNITS     = 'ppt',
+ D_GRID_NAME     = 'GEXAMP2',
+ D_GRID_START    =          1,          1,           1,          1,
+ D_GRID_END      =         20,          5,           1,          1,
+ $END
+ **************************************************
+ $VARIABLE_RECORD
+ D_VAR_CODE = '**END OF VARS**'
+ $END
+ **************************************************
+ $EXTRA_RECORD
+ $END
+ $STEPFILE_RECORD
+ S_FILENAME      = 'dummy_t_indep.001' ,
+ S_AUX_SET_NUM   =           0,
+ S_START =   -1.E34,
+ S_END   =   -1.E34,
+ S_DELTA =   1.,
+ S_NUM_OF_FILES  =           1,
+ S_REGVARFLAG    = '     ',
+ S_INDEX = '                       '
+ $END
+ **************************************************
+ $STEPFILE_RECORD
+ S_FILENAME = '**END OF STEPFILES**'
+ $END
+ **************************************************
