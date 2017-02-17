@@ -1,0 +1,32 @@
+* EXAMPLE.GRD
+* ... just a bunch of axes and grids created arbitrarily 
+************************************************************************************************************************************
+* Line definitions first: name, number of points, ordering, and defined by start,delta or coordinate values (given below)
+* "ordering" may be "WE" (longitude), "SN"(latitude), "UD"(depth), "TI"(time) or "NA"(non-standard values)
+* use "NA" instead of "WE", "SN", "UD", or "TI" to turn off special lat,long,depth,time formatting
+************************************************************************************************************************************
+*         name      npts     orient       units                   
+*
+LINE      XAX       20        NA        METERS           START,DELTA:          0  30
+LINE      YAX1      50        SN       DEGREES           START,DELTA:        -25   1
+LINE      YAX2       5        NA         MILES           GIVEN BELOW
+LINE      ZAX      301        UD        METERS           START,DELTA:          5  10
+*LINE      TTEST     20        TI        HOURS	         GIVEN BELOW
+************************************************************************************************************************************
+* Next comes grid definitions: gridname and rotation, followed by lines they contain (along with inner/outer product flag)
+************************************************************************************************************************************
+GRID      GEXAMP1      0.0         XAX      OUTER       YAX1    OUTER     ZAX    OUTER     NORMAL   OUTER
+GRID      GEXAMP2      0.0         XAX      OUTER       YAX2    OUTER  NORMAL    OUTER     NORMAL   OUTER
+*
+*TIME TTEST 1-JAN-1980:00:00:00
+*
+************************************************************************************************************************************
+* Lastly, coordinate/box size pairs for those lines not specified by start,delta: line name followed by format for coordinates
+************************************************************************************************************************************
+* irregularly spaces Y axis points and their corresponding extents along the Y axis
+COORDS    YAX2    (F3.0,F6.1)    2.5
+  5   5.0
+ 10  12.5
+ 20  15.0
+ 40  30.0
+ 80  50.0

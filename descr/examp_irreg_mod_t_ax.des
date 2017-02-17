@@ -1,0 +1,74 @@
+* this is a dummy descriptor that illustrates one way to set up an "irregular",
+* "modulo" time axis
+* an example of this would be a calendar year with months of varying length
+* where the calendar year should repeat identically year after year
+* Note, however, that while the varying-length months will correctly cycle
+* in groups of 12 the date labels attached to these months will still be "exact"
+* because FERRET will continue to attach a leap year calculation to the date
+* strings
+* To avoid this effect use "CANCEL MODE CALENDAR"
+ *****************************************************************************
+ *        descriptor for TMAP GT format
+ *****************************************************************************
+ $FORMAT_RECORD
+ D_TYPE  = '  GT',
+ D_FORMAT        = '  1C',
+ D_SOURCE_CLASS  = 'MODEL OUTPUT    ',
+ D_SOURCE        = ' ',
+ D_SUBSOURCE     = 'whatever',
+ $END
+ $BACKGROUND_RECORD
+ D_EXPNUM        = '10B',
+ D_MODNUM        = 'AAAA',
+ D_TITLE 	 = 'SAMPLE DATA _ IRREGULAR TIME STEP',
+ D_MOD_TITLE     = ' ',
+ D_T0TIME	 = '1-JAN-1920',  
+ D_TIME_UNIT     =  86400.,         
+ D_TIME_MODULO   = .FALSE.,	    
+ D_ADD_PARM      = 6*'      ',
+ d_grid_filename = 'examp_irreg_mod_t_ax.grd',5*' '
+ $END
+ $MESSAGE_RECORD
+ D_MESSAGE       = 'dummy data set to demonstrate irregular time axis (try "SHOW GRID/T V1")',
+ D_ALERT_ON_OPEN = T,
+ D_ALERT_ON_OUTPUT = F
+ $END
+ $VARIABLE_RECORD
+ D_VAR_CODE      = 'V1',
+ D_VAR_TITLE     = 'Test Variable number 1',
+ D_VAR_TITL_MOD  = '                                        ',
+ D_VAR_UNITS     = 'm/s',
+ D_GRID_NAME     = 'GCIRREG',
+ D_MISSING_FLAG  = -1.E+34,
+ D_BAD_FLAG      = -1.E+34,
+ D_ORDERING      = 'WE', 'SN', 'UD', 'TI',
+ D_GRID_START    =          1,          1,           1,          1,    
+ D_GRID_END      =         20,          5,           3,         12,    
+ D_PRECISION     = 'SINGLE      ',
+ D_AUX_SET_NUM   =           0
+ $END
+! note T in above grid definition
+ **************************************************
+ $VARIABLE_RECORD
+ D_VAR_CODE = '**END OF VARS**'
+ $END
+ **************************************************
+ $EXTRA_RECORD
+ $END
+ $STEPFILE_RECORD
+ s_filename      = 'dummy.001' ,
+ S_START =   15.5,               
+ S_END   =   350.0,		  
+ S_DELTA =   334.5,
+ S_NUM_OF_FILES  =           1,
+ S_REGVARFLAG    = '     ',
+ S_INDEX = '                       '
+ $END
+ **************************************************
+! s_start --> 1st time word from grid file
+! s_end -->	last time word from grid file 
+!s_delta --> ignored
+ $STEPFILE_RECORD
+ s_filename = '**END OF STEPFILES**'
+ $END
+ **************************************************

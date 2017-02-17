@@ -1,0 +1,69 @@
+* this is a dummy descriptor that illustrates one way to set up an "irregular",
+* time axis (a list of exact, unequally-spaced, calendar dates)
+ *****************************************************************************
+ *        descriptor for TMAP GT format
+ *****************************************************************************
+ $FORMAT_RECORD
+ D_TYPE  = '  GT',
+ D_FORMAT        = '  1C',
+ D_SOURCE_CLASS  = 'MODEL OUTPUT    ',
+ D_SOURCE        = ' ',
+ D_SUBSOURCE     = 'whatever',
+ $END
+ $BACKGROUND_RECORD
+ D_EXPNUM        = '10B',
+ D_MODNUM        = 'AAAA',
+ D_TITLE 	 = 'SAMPLE DATA _ IRREGULAR TIME STEP',
+ D_MOD_TITLE     = ' ',
+ D_T0TIME	 = '1-JAN-1920',    
+ D_TIME_UNIT     =  86400.,         
+ D_TIME_MODULO   = .FALSE.,	    
+ D_NTEGRATE_TSTEP        =   1.000000    ,
+ D_ADD_PARM      = 6*'      ',
+ d_grid_filename = 'examp_irreg_t_ax.grd',5*' '
+ $END
+ $MESSAGE_RECORD
+ D_MESSAGE       = 'dummy data set to demonstrate irregular time axis (try "SHOW GRID/T V1")',
+ D_ALERT_ON_OPEN = T,
+ D_ALERT_ON_OUTPUT = F
+ $END
+* D_TOTIME, D_TIME_UNIT,D_TIME_MODULO are irrelevant - they are specified in grid file
+ $VARIABLE_RECORD
+ D_VAR_CODE      = 'V1',
+ D_VAR_TITLE     = 'Test Variable number 1',
+ D_VAR_TITL_MOD  = '                                        ',
+ D_VAR_UNITS     = 'm/s',
+ D_GRID_NAME     = 'GIRREG',
+ D_MISSING_FLAG  = -1.E+34,
+ D_BAD_FLAG      = -1.E+34,
+ D_ORDERING      = 'WE', 'SN', 'UD', 'TI',
+ D_GRID_START    =          1,          1,           1,          1,  
+ D_GRID_END      =         20,          5,           3,         15,  
+ D_PRECISION     = 'SINGLE      ',
+ D_AUX_SET_NUM   =           0
+ $END
+*NOTE T in above grid definition
+ **************************************************
+ $VARIABLE_RECORD
+ D_VAR_CODE = '**END OF VARS**'
+ $END
+ **************************************************
+ $EXTRA_RECORD
+ $END
+ $STEPFILE_RECORD
+ s_filename      = 'dummy.001' ,
+ S_START =   88020.0,           
+ S_END   =   98220.0,		
+ S_DELTA =   1.0,		
+ S_NUM_OF_FILES  =           1,
+ S_REGVARFLAG    = '     ',
+ S_INDEX = '                       '
+ $END
+* s_start ---> 1st time word from grid file
+* s_end ----> last time word from grid file
+* s_delta ----> ignored
+ **************************************************
+ $STEPFILE_RECORD
+ s_filename = '**END OF STEPFILES**'
+ $END
+ **************************************************
