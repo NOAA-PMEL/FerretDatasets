@@ -1,5 +1,5 @@
 # FerretDatasets
-Standard datasets used by `Ferret` and `PyFerret`
+Standard datasets used by **Ferret** and **PyFerret**
 
 #### Legal Disclaimer
 *This repository is a software product and is not official communication 
@@ -24,7 +24,7 @@ and
 For more information, see the Ferret/PyFerret website at
 [http://ferret.pmel.noaa.gov/Ferret/](http://ferret.pmel.noaa.gov/Ferret/)
 
-The value of the `Ferret`/`PyFerret` environment variable `$FER_DSETS` 
+The value of the Ferret/PyFerret environment variable `FER_DSETS` 
 should be a directory with the contents of this repository. 
 (So the `$FER_DSETS` directory contains the `data`, `descr`, and 
 `grids` subdirectories.)
